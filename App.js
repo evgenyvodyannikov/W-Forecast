@@ -1,20 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, Button, SafeAreaView, Alert, Image, TouchableWithoutFeedback} from "react-native";
 
-export default function App() {
+const App = () => {
+  const HandleButtonPress = () => Alert.alert("Yo", "Wanna cook?",
+  [{text: "Yes, bitch!"}, {text: "No, Mr. White."}]);
+
+  const HandleButtonPress2 = () => Alert.prompt("Say my name", "Message", text => console.log(text));
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Text>The braking bad tutorial</Text>
+      <Button title="Dont touch this" onPress={HandleButtonPress}/>
+      <Button title="Cmon" onPress={HandleButtonPress2}/>
+      <TouchableWithoutFeedback onPress={HandleButtonPress}>
+      <Image blurRadius={1} source={require("./assets/favicon.png")}/>
+      </TouchableWithoutFeedback>
+      
+      {/* Статус бар - невидимый */}
+      <StatusBar style="inverted" />
+    </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
+
+export default App;
