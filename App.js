@@ -1,24 +1,17 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, Button, SafeAreaView, Alert, Image, TouchableWithoutFeedback} from "react-native";
+import { StyleSheet, Text, Button,  SafeAreaView, Alert, Image, TouchableWithoutFeedback, View, ViewBase } from "react-native";
 
 const App = () => {
-  const HandleButtonPress = () => Alert.alert("Yo", "Wanna cook?",
-  [{text: "Yes, bitch!"}, {text: "No, Mr. White."}]);
-
-  const HandleButtonPress2 = () => Alert.prompt("Say my name", "Message", text => console.log(text));
-
   return (
-    <SafeAreaView style={styles.container}>
-      <Text>The braking bad tutorial</Text>
-      <Button title="Dont touch this" onPress={HandleButtonPress}/>
-      <Button title="Cmon" onPress={HandleButtonPress2}/>
-      <TouchableWithoutFeedback onPress={HandleButtonPress}>
-      <Image blurRadius={1} source={require("./assets/favicon.png")}/>
-      </TouchableWithoutFeedback>
-      
-      {/* Статус бар - невидимый */}
-      <StatusBar style="inverted" />
-    </SafeAreaView>
+    <SafeAreaView style={[styles.container, { flexDirection: "column" }]}>
+
+      <View style={styles.currentForecast}>
+        <Text style={{ fontSize: 15 }}>Moscow 10°C Sunny</Text>
+        <Text></Text>
+      </View>
+      <View style={{ flex: 20 }}>
+        
+      </View>
+    </SafeAreaView >
   );
 };
 
@@ -26,8 +19,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+  },
+  currentForecast: {
+    flex: 1,
+    backgroundColor: "#cce6ff",
     alignItems: "center",
     justifyContent: "center",
+    flexDirection: "row"
   },
 });
 
